@@ -1,0 +1,24 @@
+#!/usr/bin/env bash
+# Run a private Wayland compositor in a window. Never replace the installed shell.
+set -euo pipefail
+preview_root="$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")/.." && pwd)"
+if [[ ! -x "$preview_root/build-cyberpunk/noctalia" ]]; then
+    echo "Build first: meson compile -C build-cyberpunk -j 6 noctalia" >&2
+    exit 1
+fi
+case "${1:-}" in
+    "") export NOCTALIA_CYBERPUNK=1 ;;
+    --baseline) export NOCTALIA_CYBERPUNK=0 ;;
+    *) echo "Usage: $0 [--baseline]" >&2; exit 1 ;;
+esac
+export NOCTALIA_CONFIG_HOME="$preview_root/cyberpunk/config"
+export NOCTALIA_STATE_HOME="$preview_root/build-cyberpunk/preview-state"
+export XDG_CACHE_HOME="$preview_root/build-cyberpunk/preview-cache"
+export NOCTALIA_ASSETS_DIR="$preview_root/assets"
+export NOCTALIA_IDLE_PROFILE=1
+# Keep desktop preference writes inside the test process.
+export GSETTINGS_BACKEND=memory
+mkdir -p "$NOCTALIA_STATE_HOME" "$XDG_CACHE_HOME"
+# The child compositor supplies a distinct WAYLAND_DISPLAY. Its private D-Bus
+# session isolates notification ownership and other shell D-Bus services.
+exec dbus-run-session -- niri --config "$preview_root/cyberpunk/niri.kdl" -- "$preview_root/tools/cyberpunk-shell"

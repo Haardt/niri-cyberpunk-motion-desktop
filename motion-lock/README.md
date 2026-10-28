@@ -8,7 +8,7 @@ A Rust Wayland session locker with animated shaders from Motion Render and a sca
 
 ## Projects and dependencies
 
-See the [complete checkout, build-order and Arch installation guide](../README.md) for all four projects.
+See the [complete checkout, build-order and Arch installation guide](../README.md) for the complete monorepo.
 
 Unlike the wallpaper and greeter, this project uses `vendor/motion-render`, not the sibling renderer directory. Its drawing/UI code is copied from Motion Login and maintained here. It builds independently of the other checkouts; updating them does not update this snapshot or interface. See `THIRD-PARTY.txt` for provenance.
 

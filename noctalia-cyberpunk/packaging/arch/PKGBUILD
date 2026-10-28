@@ -1,0 +1,44 @@
+pkgname=noctalia-cyberpunk
+pkgver=5.3.0
+pkgrel=1
+pkgdesc='A sleek, customizable desktop shell crafted for Wayland (Cyberpunk fork)'
+arch=('x86_64' 'aarch64')
+url='https://github.com/Haardt/niri-cyberpunk-motion-desktop'
+license=('MIT')
+depends=('bash' 'cairo' 'curl' 'fontconfig' 'freetype2' 'git' 'glib2' 'glibc'
+         'gcc-libs' 'harfbuzz' 'jemalloc' 'libglvnd' 'libical' 'libjxl'
+         'libpipewire' 'libqalculate' 'librsvg' 'libsecret' 'libsndfile'
+         'libsodium' 'libwebp' 'libwireplumber' 'libxkbcommon' 'libxml2'
+         'md4c' 'pam' 'polkit' 'pango' 'sdbus-cpp' 'tomlplusplus' 'wayland')
+makedepends=('meson' 'ninja' 'pkgconf' 'gcc' 'wayland-protocols' 'nlohmann-json' 'stb')
+optdepends=('niri: nested preview and desktop compositor' 'upower: battery integration'
+            'power-profiles-daemon: power profile controls' 'fprintd: fingerprint authentication')
+options=('!lto' '!debug')
+source=("$pkgname-$pkgver.tar.gz")
+sha256sums=('SOURCE_HASH')
+
+build() {
+    cd "$srcdir/$pkgname-$pkgver"
+    meson setup build-package --prefix=/usr --buildtype=release -Dtests=enabled
+    meson compile -C build-package -j "${BUILD_JOBS:-4}" noctalia cyberpunk_effect_test
+}
+
+check() {
+    cd "$srcdir/$pkgname-$pkgver"
+    meson test -C build-package cyberpunk_effect --print-errorlogs
+    NOCTALIA_CONFIG_HOME="$PWD/cyberpunk/config" NOCTALIA_STATE_HOME="$PWD/build-package/config-check" \
+        ./build-package/noctalia config validate
+}
+
+package() {
+    cd "$srcdir/$pkgname-$pkgver"
+    install -Dm755 build-package/noctalia "$pkgdir/usr/lib/noctalia-cyberpunk/noctalia"
+    install -Dm755 packaging/arch/noctalia-cyberpunk "$pkgdir/usr/bin/noctalia-cyberpunk"
+    install -d "$pkgdir/usr/share/noctalia-cyberpunk"
+    cp -a assets cyberpunk/profile "$pkgdir/usr/share/noctalia-cyberpunk/"
+    install -Dm644 README.md "$pkgdir/usr/share/doc/$pkgname/README.md"
+    install -Dm644 README.upstream.md "$pkgdir/usr/share/doc/$pkgname/README.upstream.md"
+    install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+    install -Dm644 CREDITS.md "$pkgdir/usr/share/licenses/$pkgname/CREDITS.md"
+    cp -a third_party "$pkgdir/usr/share/licenses/$pkgname/"
+}

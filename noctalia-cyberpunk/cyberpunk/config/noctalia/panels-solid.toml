@@ -1,0 +1,19 @@
+# Attached panels inherit the transparent bar's alpha; use opaque floating panels.
+[shell.panel]
+transparency_mode = "solid"
+control_center_placement = "floating"
+control_center_position = "auto"
+wallpaper_placement = "floating"
+wallpaper_position = "auto"
+session_placement = "floating"
+session_position = "auto"
+floating_offset = 8
+
+[widget.tray]
+detached_panel = true
+
+[notification]
+background_opacity = 1.0
+
+[osd]
+background_opacity = 1.0

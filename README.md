@@ -2,6 +2,8 @@
 
 A cyberpunk-inspired look and feel for a Wayland/niri desktop: custom login and lock screens, animated wallpapers, and a fork of the **Noctalia** desktop shell with glitch animations.
 
+The login and lock screens are prepared for fingerprint authentication on a Framework laptop using `fprintd` and dedicated PAM policies.
+
 ## Desktop demo
 
 https://github.com/user-attachments/assets/8a1c5648-d8cc-49ca-9b04-4cf276cdd851
@@ -34,14 +36,15 @@ Login and lock screen previews with the animated ocean sunrise background, captu
 | [niri-motion-background](niri-motion-background/README.md) | Desktop wallpaper daemon, CLI and shader collection | Sibling `../motion-render` through a Cargo path dependency | Wayland compositor, EGL/OpenGL; optional niri/Noctalia integration and libmpv video |
 | [motion-login](motion-login/README.md) | greetd login UI and background supervisor | Sibling `../motion-render`; configuration and packaging also use shader/license assets from `../niri-motion-background` | greetd, dedicated niri compositor, PAM/fprintd; optional libmpv |
 | [motion-lock](motion-lock/README.md) | Wayland session locker with password/fingerprint unlock | Its own `vendor/motion-render` snapshot and copied login drawing code; no sibling Cargo dependency | `ext-session-lock-v1`, PAM; optional fprintd; wallpaper config/shaders unless an explicit shader is configured |
+| [noctalia-cyberpunk](noctalia-cyberpunk/README.md) | Noctalia 5.3.0 fork with angular panels, launcher glitches, bar sweeps and tooltip effects | Independent C++23 / Meson build; vendored upstream dependencies | Wayland/GLES, PipeWire and desktop services; optional recorder plugin |
 
 `motion-lock` is deliberately independent at build time. Editing the sibling renderer or login UI does **not** update the locker. Review and explicitly port changes into its snapshot/copied UI when needed. At runtime its default shader discovery reads `~/.config/niri-motion-background/config.toml` and queries the running wallpaper daemon when available. A fixed `shader` path removes that runtime dependency.
 
-Noctalia, niri, greetd, fprintd and mpv are external projects. The local `noctalia-cyberpunk` directory is a separate shell customization, not a fifth build dependency of these four projects. Wallpaper integration can call an already installed Noctalia, but building this set does not require that checkout.
+The customized Noctalia fork is included as a fifth component. It builds independently of the four Rust projects. niri, greetd, fprintd and mpv remain external projects. The fork package uses distinct binary/assets paths and can coexist with the upstream Noctalia package; only one full shell should run per session.
 
 ## One repository, one checkout
 
-This monorepo keeps the four projects as sibling directories:
+This monorepo keeps five components as sibling directories:
 
 ```text
 motion-desktop/
@@ -49,10 +52,11 @@ motion-desktop/
 ├── motion-render/
 ├── niri-motion-background/
 ├── motion-login/
-└── motion-lock/
+├── motion-lock/
+└── noctalia-cyberpunk/
 ```
 
-The repository is hosted at [Haardt/niri-cyberpunk-motion-desktop](https://github.com/Haardt/niri-cyberpunk-motion-desktop). Clone all four projects together:
+The repository is hosted at [Haardt/niri-cyberpunk-motion-desktop](https://github.com/Haardt/niri-cyberpunk-motion-desktop). Clone all five components together:
 
 ```sh
 mkdir -p ~/workspaces/linux
@@ -70,7 +74,7 @@ Each Rust project retains its own `Cargo.toml` and `Cargo.lock`; this is a Git m
 
 ## Arch/CachyOS prerequisites
 
-Install build tools and the native libraries used across the four projects:
+Install build tools and native libraries for the four Rust projects:
 
 ```sh
 sudo pacman -S --needed base-devel rust clang pkgconf python wayland libglvnd mesa libxkbcommon pam niri
@@ -91,6 +95,8 @@ sudo pacman -S --needed swayidle
 
 Fingerprint authentication additionally requires supported hardware and an enrolled finger. The shader backend needs a working EGL/OpenGL 3.3 driver; installing Mesa alone does not configure every GPU.
 
+The Noctalia fork additionally needs C++23, Meson/Ninja and the native libraries listed in its [Arch dependency instructions](noctalia-cyberpunk/README.md#archcachyos-dependencies). It does not use Cargo.
+
 ## Build order and checks
 
 From `~/workspaces/linux/motion-desktop`, a useful verification order is:
@@ -105,13 +111,13 @@ cargo build --release --locked --manifest-path motion-lock/Cargo.toml
 cargo test --locked --manifest-path motion-lock/Cargo.toml
 ```
 
-This is a review order, not a requirement to install a renderer first. Cargo automatically compiles each path dependency. Login and wallpaper can build independently once their sibling sources exist; the locker can build on its own because its renderer is vendored. The wallpaper daemon does not have to be running to build the login screen.
+This is a review order, not a requirement to install a renderer first. Cargo automatically compiles each path dependency. Login and wallpaper can build independently once their sibling sources exist; the locker can build on its own because its renderer is vendored. The wallpaper daemon does not have to be running to build the login screen. Build the independent Noctalia fork before or after these projects using its Meson/package helper.
 
 Use `CARGO_BUILD_JOBS=4` to limit parallel compilation if needed. GPU, nested-compositor and authentication tests have additional requirements described in the project READMEs; unit/configuration tests alone do not establish that real login/unlock or suspend/resume works on your hardware.
 
 ## Build Arch packages, then install with pacman
 
-There are three executable packages. `motion-render` is compiled into them and does not need a standalone package. These commands use the versions currently declared in the package recipes; when changing versions/releases, use the corresponding newly generated filename. `makepkg --packagelist` in the package build directory lists the output paths.
+There are four executable packages, including the Noctalia fork. `motion-render` is compiled into them and does not need a standalone package. These commands use the versions currently declared in the package recipes; when changing versions/releases, use the corresponding newly generated filename. `makepkg --packagelist` in the package build directory lists the output paths.
 
 ```sh
 cd ~/workspaces/linux/motion-desktop/niri-motion-background
@@ -125,11 +131,17 @@ sudo pacman -U ./dist/arch/motion-login-0.3.0-14-x86_64.pkg.tar.zst
 cd ~/workspaces/linux/motion-desktop/motion-lock
 ./packaging/build-package.sh
 sudo pacman -U ./motion-lock-0.2.0-1-x86_64.pkg.tar.zst
+
+cd ~/workspaces/linux/motion-desktop/noctalia-cyberpunk
+./packaging/arch/build-package.sh
+sudo pacman -U ./dist/arch/noctalia-cyberpunk-5.3.0-1-x86_64.pkg.tar.zst
 ```
 
-The helpers create source archives and checksums, then run `makepkg` including its checks. The login archive includes the sibling renderer and wallpaper shader/licenses; the wallpaper archive includes its sibling renderer; the locker archive includes only its own project and vendored sources. Do not invoke the template wallpaper/login PKGBUILDs directly: their source checksum placeholders are filled by the helpers. Installing with `pacman -U` resolves declared repository dependencies. Package installation does not activate greetd or the wallpaper service, or replace your existing session-lock setup.
+The helpers create source archives and checksums, then run `makepkg` including its checks. The login archive includes the sibling renderer and wallpaper shader/licenses; the wallpaper archive includes its sibling renderer; the locker archive includes only its own project and vendored sources. Do not invoke the template wallpaper/login/Noctalia PKGBUILDs directly: their source checksum placeholders are filled by the helpers. Installing with `pacman -U` resolves declared repository dependencies. Package installation does not activate greetd or the wallpaper service, or replace your existing session-lock setup.
 
 ## Configure and activate
+
+The [Noctalia fork guide](noctalia-cyberpunk/README.md) covers an isolated preview, the optional live profile, niri autostart and returning to upstream. Installing its package does not replace or stop the current shell.
 
 1. **Wallpaper:** follow the [package setup](niri-motion-background/README.md#arch-package-installation) to copy the initial per-user config/shaders, then enable its user service from your Wayland session. Existing user-installed binaries and user service overrides take precedence over packaged versions; review them when migrating from `install.sh`.
 2. **Login:** preview with `motion-login/preview.sh`, then follow the [greetd activation and rollback guide](motion-login/packaging/arch/INSTALL.md). Switching display managers is a separate step performed from a TTY after logging out. Installing a package does not switch the running desktop.

@@ -4,6 +4,7 @@ This monorepo contains projects with different licenses. The AI experiment notic
 
 | Component | License / provenance |
 | --- | --- |
+| `noctalia-cyberpunk` | MIT; upstream Noctalia and the local renderer customizations; see `noctalia-cyberpunk/LICENSE`, `CREDITS.md` and vendored notices |
 | `motion-render` | MIT; see `motion-render/LICENSE` |
 | `niri-motion-background` application | MIT; see `niri-motion-background/LICENSE` |
 | Wallpaper shaders and third-party assets | Mixed licenses and asset-specific terms; see `niri-motion-background/THIRD_PARTY.md` and `third_party/` |

@@ -6,7 +6,7 @@
 
 ## Building the complete project set
 
-See the [shared checkout, dependency, build-order and Arch installation guide](../README.md) for all four projects. This crate has no standalone executable or Arch package: Cargo compiles it into the wallpaper and login binaries through `../motion-render`. Motion Lock uses a separate vendored snapshot; changing this directory does not update that copy.
+See the [shared checkout, dependency, build-order and Arch installation guide](../README.md) for the complete monorepo. This crate has no standalone executable or Arch package: Cargo compiles it into the wallpaper and login binaries through `../motion-render`. Motion Lock uses a separate vendored snapshot; changing this directory does not update that copy.
 
 A Rust library for native Wayland GPU backgrounds. It provides EGL/OpenGL rendering, GLSL shaders, still images, optional hardware-decoded video, and a battery-aware layer-shell runtime.
 

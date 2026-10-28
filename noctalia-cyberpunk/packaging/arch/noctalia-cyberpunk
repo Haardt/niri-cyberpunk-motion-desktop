@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+set -euo pipefail
+export NOCTALIA_CYBERPUNK=1
+export NOCTALIA_CYBERPUNK_LIVE=1
+export NOCTALIA_ASSETS_DIR=/usr/share/noctalia-cyberpunk/assets
+exec /usr/lib/noctalia-cyberpunk/noctalia "$@"

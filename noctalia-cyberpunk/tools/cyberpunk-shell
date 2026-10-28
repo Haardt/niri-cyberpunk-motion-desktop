@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+set -euo pipefail
+preview_root="$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")/.." && pwd)"
+printf '%s\n' "$WAYLAND_DISPLAY" > "$NOCTALIA_STATE_HOME/wayland-display"
+printf '%s\n' "${NIRI_SOCKET:-}" > "$NOCTALIA_STATE_HOME/niri-socket"
+exec "$preview_root/build-cyberpunk/noctalia"

@@ -1,0 +1,157 @@
+# Fabric-inspired three-lane bar. All colors follow the selected palette.
+[bar.default]
+position = "top"
+thickness = 42
+margin_ends = 8
+margin_edge = 4
+padding = 4
+widget_spacing = 7
+background_opacity = 0.0
+compositor_blur = false
+shadow = false
+radius = 16
+reserve_space = true
+font_weight = 650
+font_scale = 0.95
+capsule = true
+capsule_fill = "surface_variant"
+capsule_foreground = "on_surface"
+capsule_opacity = 1.0
+capsule_padding = 9.0
+capsule_radius = 12.0
+capsule_thickness = 0.82
+capsule_border = "outline"
+capsule_border_width = 1.0
+start = ["workspaces", "keyboard_layout", "media", "screenshot", "privacy"]
+center = ["group:cyber-clock"]
+end = ["network_rx", "group:cyber-resources", "group:cyber-status", "tray", "session"]
+
+[[bar.default.capsule_group]]
+id = "cyber-clock"
+members = ["cyber-day", "cyber-time", "cyber-date"]
+fill = "surface"
+foreground = "primary"
+border = "outline"
+border_width = 1.0
+radius = 16.0
+padding = 12.0
+widget_spacing = 12
+enabled = true
+
+[[bar.default.capsule_group]]
+id = "cyber-resources"
+members = ["cpu", "ram", "cpu-temperature"]
+fill = "surface_variant"
+foreground = "secondary"
+border = "outline"
+radius = 12.0
+padding = 9.0
+widget_spacing = 8
+enabled = true
+
+[[bar.default.capsule_group]]
+id = "cyber-status"
+members = ["network", "volume", "battery"]
+fill = "surface_variant"
+foreground = "primary"
+border = "outline"
+radius = 12.0
+padding = 9.0
+widget_spacing = 9
+enabled = true
+
+[widget.workspaces]
+style = "focus_hint"
+show_labels = true
+show_icons = true
+label_source = "name"
+max_label_chars = 12
+focused_color = "primary"
+occupied_color = "secondary"
+empty_color = "outline"
+
+[widget.keyboard_layout]
+hide_when_single_layout = false
+color = "tertiary"
+
+[widget.media]
+art_size = 22.0
+min_length = 0.0
+max_length = 110.0
+color = "secondary"
+
+[widget.cyber-day]
+type = "clock"
+format = "{:%a}"
+color = "on_surface_variant"
+[widget.cyber-day.actions]
+left = "panel-toggle control-center calendar"
+
+[widget.cyber-time]
+type = "clock"
+format = "{:%H:%M}"
+anchor = true
+font_weight = 700
+color = "primary"
+[widget.cyber-time.actions]
+left = "panel-toggle control-center calendar"
+
+[widget.cyber-date]
+type = "clock"
+format = "{:%d.%m.}"
+color = "on_surface_variant"
+[widget.cyber-date.actions]
+left = "panel-toggle control-center calendar"
+
+[widget.cpu]
+type = "sysmon"
+stat = "cpu_usage"
+visualization = "gauge"
+show_value = false
+color = "primary"
+
+[widget.ram]
+type = "sysmon"
+stat = "ram_pct"
+visualization = "gauge"
+show_value = false
+color = "secondary"
+
+[widget.network_rx]
+type = "sysmon"
+stat = "net_rx"
+visualization = "none"
+network_speed_compact = true
+label_min_width = 42.0
+color = "on_surface_variant"
+
+[widget.battery]
+display_mode = "glyph"
+show_label = true
+label_content = "percent"
+color = "tertiary"
+
+[widget.tray]
+drawer = true
+color = "on_surface_variant"
+
+[widget.session]
+color = "secondary"
+
+# Native CPU package temperature; sensor auto-detection survives hwmon renumbering.
+[widget.cpu-temperature]
+type = "sysmon"
+stat = "cpu_temp"
+visualization = "none"
+show_value = true
+show_glyph = true
+custom_label = "CPU"
+label_min_width = 42.0
+color = "secondary"
+highlight_color = "error"
+
+[widget.cpu-temperature.actions]
+left = "panel-toggle control-center system"
+
+[widget.screenshot]
+color = "secondary"

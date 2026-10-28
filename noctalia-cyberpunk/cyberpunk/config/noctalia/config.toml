@@ -1,0 +1,52 @@
+[shell]
+button_borders = true
+card_borders = true
+input_borders = true
+popup_borders = true
+polkit_agent = false
+telemetry_enabled = false
+clipboard_enabled = false
+font_family = "monospace"
+corner_radius_scale = 1.0
+
+[shell.panel]
+borders = true
+border_color = "primary"
+border_width = 1.0
+transparency_mode = "solid"
+control_center_placement = "floating"
+
+[theme]
+source = "custom"
+custom_palette = "Cyberpunk-Prototype"
+mode = "dark"
+
+[theme.templates]
+enable_builtin_templates = false
+enable_community_templates = false
+
+[notification]
+enable_daemon = false
+
+[lockscreen]
+enabled = false
+
+[idle.behavior.lock]
+enabled = false
+
+[idle.behavior.screen-off]
+enabled = false
+
+[wallpaper]
+enabled = false
+fill_color = "#080C14"
+
+[dock]
+enabled = false
+
+[plugins]
+enabled = []
+auto_update = "none"
+
+[control_center.calendar]
+show_week_numbers = true

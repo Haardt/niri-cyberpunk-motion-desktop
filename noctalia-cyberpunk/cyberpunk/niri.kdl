@@ -1,0 +1,21 @@
+// Nested preview only: never use --session with this config.
+input {
+    keyboard {
+        xkb { layout "us"; }
+    }
+    mod-key "Alt"
+}
+hotkey-overlay { skip-at-startup; }
+prefer-no-csd
+layout {
+    background-color "#080c14"
+    gaps 12
+}
+binds {
+    Mod+Space { spawn "noctalia" "msg" "panel-toggle" "launcher"; }
+    Mod+C { spawn "noctalia" "msg" "panel-toggle" "control-center"; }
+    Mod+Shift+Q { quit skip-confirmation=true; }
+}
+
+// Match the 2x scaling of the laptop display in the nested desktop.
+output "winit" { scale 2.0; }
