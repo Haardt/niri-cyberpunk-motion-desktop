@@ -4,9 +4,9 @@ A cyberpunk-inspired look and feel for a Wayland/niri desktop: custom login and 
 
 ## Desktop demo
 
-[![Watch the desktop demo: cyberpunk launcher, system tooltip and animated ocean wallpaper](screenshots/desktop-demo-preview.jpg)](recordings/desktop-demo.mp4)
+https://github.com/user-attachments/assets/8a1c5648-d8cc-49ca-9b04-4cf276cdd851
 
-[▶ Watch the 27-second demo](recordings/desktop-demo.mp4) · MP4, 4.3 MB
+27-second desktop demo · H.264 MP4
 
 Two launcher openings with glitch effects, the CPU tooltip, Control Center, Settings, and twelve animated backgrounds.
 
