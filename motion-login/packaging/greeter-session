@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+# Run only within the dedicated greetd compositor.
+/usr/bin/motion-login --config /etc/motion-login/login.toml --background /etc/motion-login/background.toml
+login_status=$?
+/usr/bin/niri msg action quit --skip-confirmation
+exit "$login_status"

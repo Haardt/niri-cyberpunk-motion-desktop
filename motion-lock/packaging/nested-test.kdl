@@ -1,0 +1,4 @@
+input { keyboard { xkb { layout "us,de"; options "grp:alt_shift_toggle"; }; }; }
+layout { gaps 8; focus-ring { width 1; active-color "#35e6f5"; }; }
+prefer-no-csd
+hotkey-overlay { skip-at-startup; }

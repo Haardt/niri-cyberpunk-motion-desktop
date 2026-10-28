@@ -1,0 +1,17 @@
+# Replace the absolute source with your own local video.
+fps = 24
+battery_fps = 12
+render_scale = 0.5
+battery_render_scale = 0.35
+pause_on_idle = true
+idle_seconds = 120
+pause_when_hidden = true
+pause_on_fullscreen = true
+hwdec = "auto-safe"
+require_hardware_video = true
+active = "video"
+
+[[wallpapers]]
+name = "video"
+type = "video"
+source = "/absolute/path/to/background.mp4"

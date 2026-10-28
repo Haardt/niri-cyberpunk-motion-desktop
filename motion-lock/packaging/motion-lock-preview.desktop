@@ -1,0 +1,8 @@
+[Desktop Entry]
+Type=Application
+Name=Motion Lock Preview
+Comment=Preview animated lock screen without locking or authentication
+Exec=motion-lock --preview
+Icon=system-lock-screen
+Terminal=false
+Categories=Settings;

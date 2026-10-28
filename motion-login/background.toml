@@ -1,0 +1,561 @@
+# Choose a wallpaper below by name; restart the preview after changing active.
+fps = 24
+battery_fps = 12
+render_scale = 0.4
+battery_render_scale = 0.32
+pause_on_idle = true
+idle_seconds = 120
+pause_when_hidden = false
+pause_on_fullscreen = false
+active = "cyberpunk-city-rain"
+[rotation]
+enabled = false
+[day_night]
+enabled = false
+
+[[wallpapers]]
+name = "cyberpunk-city-rain"
+type = "shader"
+source = "../niri-motion-background/shaders/cyberpunk-city-rain.frag"
+speed = 0.35
+brightness = 0.8
+fps = 20
+render_scale = 0.32
+stabilize = true
+
+[[wallpapers]]
+name = "topo"
+type = "shader"
+speed = 0.1
+source = "../niri-motion-background/shaders/topo.frag"
+
+[[wallpapers]]
+name = "plasma"
+type = "shader"
+speed = 0.08
+source = "../niri-motion-background/shaders/plasma.frag"
+
+[[wallpapers]]
+name = "aurora"
+type = "shader"
+speed = 0.1
+source = "../niri-motion-background/shaders/aurora.frag"
+
+[[wallpapers]]
+name = "gradient"
+type = "shader"
+speed = 0.12
+source = "../niri-motion-background/shaders/gradient.frag"
+
+[[wallpapers]]
+name = "ai1"
+type = "shader"
+speed = 0.1
+source = "../niri-motion-background/shaders/ai1.frag"
+
+[[wallpapers]]
+name = "eclipse-corona"
+type = "shader"
+source = "../niri-motion-background/shaders/eclipse-corona.frag"
+period = "any"
+speed = 0.32
+brightness = 1.0
+
+[[wallpapers]]
+name = "smoke-ring"
+type = "shader"
+source = "../niri-motion-background/shaders/smoke-ring.frag"
+period = "any"
+speed = 0.12
+brightness = 0.8
+
+[[wallpapers]]
+name = "god-rays"
+type = "shader"
+source = "../niri-motion-background/shaders/god-rays.frag"
+period = "day"
+speed = 0.16
+brightness = 0.8
+
+[[wallpapers]]
+name = "neuro-noise"
+type = "shader"
+source = "../niri-motion-background/shaders/neuro-noise.frag"
+period = "any"
+speed = 0.07
+brightness = 0.7
+
+[[wallpapers]]
+name = "black-hole"
+type = "shader"
+source = "../niri-motion-background/shaders/black-hole.frag"
+period = "night"
+speed = 0.07
+brightness = 1.0
+
+[[wallpapers]]
+name = "nebula"
+type = "shader"
+source = "../niri-motion-background/shaders/nebula.frag"
+period = "night"
+speed = 0.12
+brightness = 0.8
+
+[[wallpapers]]
+name = "arrakis"
+type = "shader"
+source = "../niri-motion-background/shaders/arrakis.frag"
+period = "day"
+speed = 0.24
+brightness = 0.9
+
+# Enable after setting a real local video file. Participates in the same rotation.
+
+[[wallpapers]]
+name = "ocean-sunrise"
+type = "shader"
+source = "../niri-motion-background/shaders/ocean-sunrise.frag"
+period = "any"
+speed = 0.5
+brightness = 0.9
+
+# User-submitted silent shaders. Heavy effects use lower per-entry budgets.
+
+[[wallpapers]]
+name = "corroded-beasts"
+type = "shader"
+source = "../niri-motion-background/shaders/corroded-beasts.frag"
+period = "any"
+speed = 0.055
+fps = 12
+render_scale = 0.28
+note = "Nusan; silent port of Corroded Beasts."
+brightness = 0.8
+stabilize = true
+
+[[wallpapers]]
+name = "fractal-cartoon"
+type = "shader"
+source = "../niri-motion-background/shaders/fractal-cartoon.frag"
+period = "any"
+speed = 0.045
+fps = 15
+render_scale = 0.28
+note = "Kali; fixed sun, generated procedural cat sprite, no sound."
+brightness = 0.85
+stabilize = true
+
+[[wallpapers]]
+name = "cube-lines"
+type = "shader"
+source = "../niri-motion-background/shaders/cube-lines.frag"
+period = "any"
+speed = 0.075
+fps = 20
+render_scale = 0.32
+note = "Danil; author-maintained array-free port; CC BY-NC-SA 3.0."
+brightness = 0.8
+stabilize = true
+
+[[wallpapers]]
+name = "synthwave-sunset"
+type = "shader"
+source = "../niri-motion-background/shaders/synthwave-sunset.frag"
+period = "any"
+speed = 0.06
+fps = 20
+render_scale = 0.3
+note = "stduhpf; audio texture sampling disabled, deterministic animation."
+brightness = 0.8
+stabilize = true
+
+[[wallpapers]]
+name = "mandelbulb"
+type = "shader"
+source = "../niri-motion-background/shaders/mandelbulb.frag"
+period = "any"
+speed = 0.05
+fps = 12
+render_scale = 0.26
+note = "evilryu; CC BY-NC-SA 3.0; initialized misses and safe math."
+brightness = 0.85
+stabilize = true
+
+[[wallpapers]]
+name = "seascape-tdm"
+type = "shader"
+source = "../niri-motion-background/shaders/seascape-tdm.frag"
+period = "any"
+speed = 0.15
+fps = 20
+render_scale = 0.22
+note = "TDM, Alexander Alekseev; CC BY-NC-SA 3.0; original ocean and camera."
+brightness = 0.9
+
+[[wallpapers]]
+name = "cloud-orbit"
+type = "shader"
+source = "../niri-motion-background/shaders/cloud-orbit.frag"
+period = "any"
+speed = 0.04
+fps = 12
+render_scale = 0.16
+note = "User-supplied volumetric cloud; opaque output; expensive ray marching."
+brightness = 0.85
+
+[[wallpapers]]
+name = "cloud-sunlit"
+type = "shader"
+source = "../niri-motion-background/shaders/cloud-sunlit.frag"
+period = "any"
+speed = 0.04
+fps = 12
+render_scale = 0.16
+note = "User-supplied cloud; repaired undefined cross product and jitter seed."
+brightness = 0.85
+
+[[wallpapers]]
+name = "neon-menger"
+type = "shader"
+source = "../niri-motion-background/shaders/neon-menger.frag"
+period = "any"
+speed = 0.045
+fps = 12
+render_scale = 0.24
+note = "User-supplied reflective fractal; capped resolution and FPS."
+brightness = 0.75
+stabilize = true
+
+[[wallpapers]]
+name = "blue-rectangles"
+type = "shader"
+source = "../niri-motion-background/shaders/blue-rectangles.frag"
+period = "any"
+speed = 0.06
+fps = 20
+render_scale = 0.25
+note = "User-supplied noise field and floating rectangles; safe denominators."
+brightness = 0.8
+
+[[wallpapers]]
+name = "sky-path"
+type = "shader"
+source = "../niri-motion-background/shaders/sky-path.frag"
+period = "any"
+note = "Nusan, SkyPath; steady camera travel, fixed focal length, silent wallpaper adaptation."
+speed = 0.18
+fps = 15
+render_scale = 0.32
+brightness = 0.85
+stabilize = true
+
+[[wallpapers]]
+name = "inercia-royale-2022"
+type = "shader"
+source = "../niri-motion-background/shaders/inercia-royale-2022.frag"
+period = "any"
+speed = 0.045
+brightness = 0.75
+fps = 12
+render_scale = 0.24
+note = "Inercia Shader Royale 2022, user-supplied; four stable samples, continuous transitions, no camera jolts or audio."
+stabilize = true
+
+[[wallpapers]]
+name = "portal-turret"
+type = "shader"
+source = "../niri-motion-background/shaders/portal-turret.frag"
+period = "any"
+speed = 0.35
+brightness = 1.0
+fps = 20
+render_scale = 0.32
+stabilize = true
+note = "Original Portal-inspired sentry turret fan-art; white shell, red eye, soft reflections, slow camera, no audio or game textures."
+
+[[wallpapers]]
+name = "cyberpunk-city-flight"
+type = "shader"
+source = "../niri-motion-background/shaders/cyberpunk-city-flight.frag"
+period = "any"
+speed = 0.35
+brightness = 1.0
+fps = 20
+render_scale = 0.32
+stabilize = true
+note = "Aerial neon city without rain; stronger cyan/magenta signs, mirrored roofs and glass, wet streets, no sound."
+
+
+[[wallpapers]]
+name = "aurora-curtains"
+type = "shader"
+source = "../niri-motion-background/shaders/aurora-curtains.frag"
+period = "any"
+speed = 0.35
+brightness = 0.9
+fps = 20
+render_scale = 0.4
+note = "Original layered turquoise/violet aurora curtains; slow motion, no textures or audio."
+
+[[wallpapers]]
+name = "wildflower-meadow"
+type = "shader"
+source = "../niri-motion-background/shaders/wildflower-meadow.frag"
+period = "any"
+speed = 0.65
+brightness = 1.0
+fps = 24
+render_scale = 0.5
+note = "Original wildflower meadow; layered grasses, daisies, poppies and violet flowers swaying in coherent wind."
+
+[[wallpapers]]
+name = "green-chrome-cubes"
+type = "shader"
+source = "../niri-motion-background/shaders/green-chrome-cubes.frag"
+period = "any"
+speed = 0.5
+brightness = 1.0
+fps = 20
+render_scale = 0.4
+stabilize = true
+note = "Original green chrome cube sea; grounded cubes, supported stacks, small solitary cubes, reflected geometry and studio lights."
+
+[[wallpapers]]
+name = "event-horizon-feast"
+type = "shader"
+source = "../niri-motion-background/shaders/event-horizon-feast.frag"
+period = "any"
+speed = 0.5
+brightness = 1.0
+fps = 20
+render_scale = 0.4
+stabilize = true
+note = "Original cinematic black hole; bent light rays, dense glowing accretion filaments and spiral feeding streams, no point particles or audio."
+
+[[wallpapers]]
+name = "bioluminescent-ocean"
+type = "shader"
+source = "../niri-motion-background/shaders/bioluminescent-ocean.frag"
+period = "any"
+speed = 0.65
+brightness = 1.0
+fps = 24
+render_scale = 0.4
+stabilize = false
+note = "Original: Bioluminescent waves and broad drifting underwater lights; no external assets or audio."
+
+[[wallpapers]]
+name = "rainy-window"
+type = "shader"
+source = "../niri-motion-background/shaders/rainy-window.frag"
+period = "any"
+speed = 0.65
+brightness = 1.0
+fps = 24
+render_scale = 0.4
+stabilize = false
+note = "Original: Refracting rain beads, wet trails and warm defocused city lights; no external assets or audio."
+
+[[wallpapers]]
+name = "emerald-glass-forest"
+type = "shader"
+source = "../niri-motion-background/shaders/emerald-glass-forest.frag"
+period = "any"
+speed = 0.65
+brightness = 1.0
+fps = 20
+render_scale = 0.32
+stabilize = true
+note = "Original: Faceted emerald glass trees, mist and soft shafts of sunlight; no external assets or audio."
+
+[[wallpapers]]
+name = "ferrofluid"
+type = "shader"
+source = "../niri-motion-background/shaders/ferrofluid.frag"
+period = "any"
+speed = 0.65
+brightness = 1.0
+fps = 20
+render_scale = 0.32
+stabilize = true
+note = "Original: Black magnetic liquid with moving spikes and studio reflections; no external assets or audio."
+
+[[wallpapers]]
+name = "autumn-koi-pond"
+type = "shader"
+source = "../niri-motion-background/shaders/autumn-koi-pond.frag"
+period = "any"
+speed = 0.65
+brightness = 1.0
+fps = 24
+render_scale = 0.4
+stabilize = false
+note = "Original: Abstract koi ribbons, translucent flowing tails, quiet maple leaves and rain rings; no external assets or audio."
+
+[[wallpapers]]
+name = "infinite-library"
+type = "shader"
+source = "../niri-motion-background/shaders/infinite-library.frag"
+period = "any"
+speed = 0.65
+brightness = 1.0
+fps = 20
+render_scale = 0.36
+stabilize = true
+note = "Original: Endless bookshelves, warm lamps, arches and drifting dust; no external assets or audio."
+
+[[wallpapers]]
+name = "crystal-cavern"
+type = "shader"
+source = "../niri-motion-background/shaders/crystal-cavern.frag"
+period = "any"
+speed = 0.65
+brightness = 1.0
+fps = 20
+render_scale = 0.32
+stabilize = true
+note = "Original: Pulsing violet and cyan crystals reflected in a dark cave pool; no external assets or audio."
+
+[[wallpapers]]
+name = "almost-touching"
+type = "shader"
+source = "../niri-motion-background/shaders/almost-touching.frag"
+period = "any"
+speed = 0.7
+brightness = 1.0
+fps = 24
+render_scale = 0.5
+stabilize = true
+note = "Original: Curved cyan and coral light membranes, brief connecting filament and stage reflections; no external assets or audio."
+
+[[wallpapers]]
+name = "world-execute"
+type = "shader"
+source = "../niri-motion-background/shaders/world-execute.frag"
+period = "any"
+speed = 0.6
+brightness = 1.0
+fps = 24
+render_scale = 0.5
+stabilize = true
+note = "Original: Breathing glass landscape with flowing height contours; always visible, no coordinate cross; no external assets or audio."
+
+[[wallpapers]]
+name = "tangent-garden"
+type = "shader"
+source = "../niri-motion-background/shaders/tangent-garden.frag"
+period = "any"
+speed = 0.65
+brightness = 1.0
+fps = 24
+render_scale = 0.55
+stabilize = false
+note = "Original: Gold and coral botanical curves with fine petal contours and traveling tangents; no external assets or audio."
+
+[[wallpapers]]
+name = "memory-of-you"
+type = "shader"
+source = "../niri-motion-background/shaders/memory-of-you.frag"
+period = "any"
+speed = 0.65
+brightness = 1.0
+fps = 24
+render_scale = 0.5
+stabilize = false
+note = "Original: Dark reflective liquid with a traveling light ribbon and fading time-lagged wakes; no external assets or audio."
+
+[[wallpapers]]
+name = "strange-simulation"
+type = "shader"
+source = "../niri-motion-background/shaders/strange-simulation.frag"
+period = "any"
+speed = 0.65
+brightness = 1.0
+fps = 24
+render_scale = 0.5
+stabilize = false
+note = "Original: Translucent glass galleries with divergent landscapes that periodically align; no external assets or audio."
+
+[[wallpapers]]
+name = "threshold-of-self"
+type = "shader"
+source = "../niri-motion-background/shaders/threshold-of-self.frag"
+period = "any"
+speed = 0.65
+brightness = 1.0
+fps = 24
+render_scale = 0.5
+stabilize = true
+note = "Original fictional consciousness metaphor: braided luminous core, pressure-deformed glass shell and slowly escaping light filaments; no audio or external assets."
+
+[[wallpapers]]
+name = "algebra-of-love"
+type = "shader"
+source = "../niri-motion-background/shaders/algebra-of-love.frag"
+period = "any"
+speed = 0.65
+brightness = 1.0
+fps = 24
+render_scale = 0.5
+stabilize = false
+note = "Original retro scientific terminal: code/AST, geometry/tangents, numerical Lorenz and double pendulum, Conway Life, illustrative network and exact heart equation; quiet five-chapter cycle, no audio."
+
+[[wallpapers]]
+name = "disco-slowmo"
+type = "shader"
+source = "../niri-motion-background/shaders/disco-slowmo.frag"
+period = "any"
+speed = 0.35
+brightness = 1.0
+fps = 24
+render_scale = 0.5
+stabilize = true
+note = "Original extravagant mirror ball: beveled silver facets, soft colored beams, sustained star glints and a reflective disco floor; one rotation about eight minutes, no strobe or audio."
+
+[[wallpapers]]
+name = "retro-boing"
+type = "shader"
+source = "../niri-motion-background/shaders/retro-boing.frag"
+period = "any"
+speed = 0.5
+brightness = 1.0
+fps = 24
+render_scale = 0.5
+stabilize = false
+note = "Original 1980s demo-scene homage: slowly bouncing red/white checker ball, filtered checker floor, visibly traveling/spreading copper bars and gentle CRT curvature; four spatial samples, no logos, strobe or audio."
+
+[[wallpapers]]
+name = "oneiric-silk"
+type = "shader"
+source = "../niri-motion-background/shaders/oneiric-silk.frag"
+period = "any"
+speed = 0.6
+brightness = 1.0
+fps = 24
+render_scale = 0.5
+stabilize = false
+note = "Original dream sculpture: continuous trefoil silk/glass ribbon, pearlescent interference, reflected folds, flowing light calligraphy and dark water reflection; four spatial samples, slow orbit, no audio or external assets."
+
+[[wallpapers]]
+name = "silk-continuum"
+type = "shader"
+source = "../niri-motion-background/shaders/silk-continuum.frag"
+period = "any"
+speed = 0.6
+brightness = 1.0
+fps = 20
+render_scale = 0.4
+stabilize = false
+note = "Original edge-to-edge dream environment: camera inside endless opalescent folds and translucent gyroid veils, reflected/refracted layers, parallax and depth haze; four spatial samples, no central object or framing, no audio."
+
+[[wallpapers]]
+name = "mandelbrot-prism-flight"
+type = "shader"
+source = "../niri-motion-background/shaders/mandelbrot-prism-flight.frag"
+period = "any"
+speed = 0.6
+brightness = 1.0
+fps = 24
+render_scale = 0.32
+stabilize = true
+note = "Original Mandelbrot prism flight: genuine z*z+c iteration, fp64 where available, smooth spiral coast approach/orbit/retreat, soft chrome relief, broad neon bands and fixed spatial filtering, temporal stabilization and a constant AC/battery pixel grid; about eight minutes per zoom cycle, no resets or audio."

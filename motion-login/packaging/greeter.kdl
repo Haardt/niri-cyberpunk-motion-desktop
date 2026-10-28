@@ -1,0 +1,6 @@
+// Dedicated greetd compositor.
+// No terminal, launcher, desktop autostarts or arbitrary command bindings.
+input { keyboard { repeat-delay 250; repeat-rate 30; }; }
+hotkey-overlay { skip-at-startup; }
+prefer-no-csd
+spawn-at-startup "/usr/lib/motion-login/greeter-session"

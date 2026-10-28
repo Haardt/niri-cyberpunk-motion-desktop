@@ -1,0 +1,19 @@
+UI sources src/{buffer,color,draw,interface}.rs are derived from the local
+motion-login project (wlgreet lineage), GPL-3.0-or-later. See LICENSE.
+
+The native session-lock backend uses Smithay Client Toolkit 0.21, under its
+MIT license; its session_lock/simple_window examples informed the backend.
+https://github.com/Smithay/client-toolkit
+
+RustLock's architecture was studied (separate PAM worker, session-lock surfaces).
+The backend/authentication code here is independently implemented rather than
+copying the complete RustLock application.
+https://github.com/JorySeverijnse/rustlock
+
+vendor/motion-render is an isolated snapshot of the local MIT-licensed
+motion-render project. See vendor/motion-render/LICENSE. The manifest and lib.rs
+expose only the renderer/configuration modules. Gpu::draw_target was added to
+render the shader into an off-screen framebuffer without changing the original
+project. Snapshot checksums before local changes: vendor/motion-render-snapshot.json.
+
+DejaVu Sans Mono is embedded; see fonts/dejavu/LICENSE.

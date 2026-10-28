@@ -1,0 +1,6 @@
+/target/
+/.test-deps/
+*.log
+__pycache__/
+*.pyc
+/dist/

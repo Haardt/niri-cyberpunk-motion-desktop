@@ -1,0 +1,6 @@
+#%PAM-1.0
+# Independent scanner; the password stack stays immediately available.
+auth requisite pam_faillock.so preauth
+auth required pam_fprintd.so max-tries=3 timeout=10
+auth required pam_faillock.so authsucc
+account include system-auth

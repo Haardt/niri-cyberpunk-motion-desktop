@@ -1,0 +1,4 @@
+#%PAM-1.0
+# Use the system authentication and account policy, including faillock.
+auth include system-auth
+account include system-auth

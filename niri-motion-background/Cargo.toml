@@ -1,0 +1,21 @@
+[package]
+name = "niri-motion-background"
+version = "0.1.0"
+edition = "2021"
+license = "MIT"
+description = "Power-conscious native Wayland GPU shader and video backgrounds"
+
+[dependencies]
+motion-render = { path = "../motion-render" }
+anyhow = "1"
+clap = { version = "4", features = ["derive"] }
+env_logger = "0.11"
+
+[dev-dependencies]
+glow = "0.18"
+image = { version = "0.25", default-features = false, features = ["png"] }
+
+[profile.release]
+lto = "thin"
+codegen-units = 1
+strip = true

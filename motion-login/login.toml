@@ -1,0 +1,46 @@
+command = "niri-session"
+# Target desktop identity and session type, matching command above.
+desktop = "niri"
+sessionType = "wayland"
+# Start authentication for this user immediately; empty = ask for username.
+# Ctrl+U or Escape cancels authentication and returns to username entry.
+defaultUser = ""
+outputMode = "active"
+# Header text, drawn with the embedded DejaVu Sans Mono font.
+title = "IDENTITY ACCESS"
+# Logical dialog size. 1.0 = original, 1.35 = 35% larger.
+uiScale = 1.35
+# Buffer density, independent of the logical dialog size.
+scale = 1
+
+[glitch]
+enabled = true
+startDelaySeconds = 3
+intervalSeconds = 10
+durationMs = 350
+strength = 0.32
+[background]
+red = 0.025
+green = 0.035
+blue = 0.065
+opacity = 1.0
+[headline]
+red = 0.98
+green = 0.94
+blue = 0.08
+opacity = 1.0
+[prompt]
+red = 0.1
+green = 0.92
+blue = 0.96
+opacity = 1.0
+[promptErr]
+red = 1.0
+green = 0.22
+blue = 0.33
+opacity = 1.0
+[border]
+red = 0.15
+green = 0.65
+blue = 0.9
+opacity = 1.0

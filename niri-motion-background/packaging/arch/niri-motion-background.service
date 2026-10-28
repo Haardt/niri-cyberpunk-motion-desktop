@@ -1,0 +1,19 @@
+[Unit]
+Description=Native Wayland motion background
+PartOf=graphical-session.target
+After=graphical-session-pre.target
+StartLimitIntervalSec=30
+StartLimitBurst=3
+
+[Service]
+Type=simple
+ExecStartPre=/usr/lib/niri-motion-background/noctalia-wallpaper.sh start
+ExecStart=/usr/bin/niri-motion-background run
+ExecStopPost=/usr/lib/niri-motion-background/noctalia-wallpaper.sh stop
+Restart=on-failure
+RestartSec=3
+Nice=10
+Environment=RUST_LOG=info
+
+[Install]
+WantedBy=graphical-session.target

@@ -1,0 +1,15 @@
+// Add to your existing niri config. Keep Noctalia's startup entry.
+// Use this OR the systemd unit, never both.
+spawn-at-startup "niri-motion-background" "run"
+
+layer-rule {
+    match namespace="^niri-motion-background$"
+    place-within-backdrop true
+}
+
+// The existing layout.background-color should remain "transparent".
+// Optional shortcuts, merge into your existing binds block:
+// Mod+Alt+N { spawn "niri-motion-background" "next"; }
+// Mod+Alt+Shift+N { spawn "niri-motion-background" "prev"; }
+// Mod+Alt+P { spawn "niri-motion-background" "toggle"; }
+// Mod+Alt+A { spawn "niri-motion-background" "auto-switch" "toggle"; }

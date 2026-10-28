@@ -1,0 +1,11 @@
+# Used by the greetd.service drop-in. SDDM is not changed by package installation.
+[general]
+# Fingerprint first, followed by password fallback. Use "greetd" for password only.
+service = "motion-login"
+[terminal]
+vt = 1
+[default_session]
+# Starting the greeter itself uses the original policy, not fingerprint auth.
+service = "greetd"
+command = "/usr/bin/dbus-run-session -- /usr/bin/niri --config /etc/motion-login/greeter.kdl"
+user = "greeter"

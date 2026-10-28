@@ -1,0 +1,8 @@
+// Nested compositor only. Does not import environment into systemd.
+input { keyboard { repeat-delay 250; repeat-rate 30; }; }
+output "winit" { mode "1280x800"; }
+prefer-no-csd
+binds {
+    Mod+Escape { quit skip-confirmation=true; }
+}
+hotkey-overlay { skip-at-startup; }

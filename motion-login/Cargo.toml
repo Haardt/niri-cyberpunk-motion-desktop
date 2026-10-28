@@ -1,0 +1,29 @@
+[package]
+name = "motion-login"
+version = "0.3.0"
+authors = ["Kenny Levinsen <kl@kl.wtf>"]
+edition = "2021"
+license = "GPL-3.0-or-later"
+description = "Native Wayland greetd login with shared GPU motion backgrounds"
+
+[profile.release]
+lto = "fat"
+
+[features]
+damage_debug = []
+
+[dependencies]
+motion-render = { path = "../motion-render" }
+anyhow = "1"
+glow = "0.18"
+zeroize = "1"
+xkeysym = "0.2"
+env_logger = "0.11"
+libc = "0.2"
+smithay-client-toolkit = { version = "0.21", default-features = false, features = ["xkbcommon"] }
+rusttype = "0.9"
+wayland-client = { version = "0.31", features = ["system"] }
+serde = { version = "1.0", features = ["derive"] }
+greetd_ipc = { version = "0.10", features = ["sync-codec"] }
+getopts = "0.2"
+toml = "1.1"

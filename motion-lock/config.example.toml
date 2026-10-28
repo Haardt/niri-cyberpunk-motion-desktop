@@ -1,0 +1,14 @@
+# ~/.config/motion-lock/config.toml
+# Without a shader override, use the currently selected shader from the running
+# niri-motion-background daemon, then fall back to its configured active shader.
+# shader = "/absolute/path/to/cyberpunk-city-rain.frag"
+pam_service = "motion-lock"
+# Independent fingerprint PAM scan; passwords remain available concurrently.
+fingerprint = true
+fingerprint_pam_service = "motion-lock-fingerprint"
+ui_scale = 1.15
+fps = 20
+battery_fps = 12
+brightness = 1.0
+# Used for explicit shader overrides; otherwise use the wallpaper's own speed.
+shader_speed = 0.1

@@ -1,0 +1,21 @@
+#%PAM-1.0
+# Dedicated policy for motion-login; original greetd/system-auth stay unchanged.
+auth       required     pam_securetty.so
+auth       requisite    pam_nologin.so
+auth       required     pam_shells.so
+auth       required     pam_faillock.so preauth
+auth       required     pam_env.so
+# Serial PAM: scan first, then the normal password stack after failure/timeout.
+auth       sufficient   pam_fprintd.so max-tries=3 timeout=10
+auth       include      system-local-login
+# Reuse the password from password login to unlock the desktop login keyring.
+# Fingerprint success returns above and supplies no decryption password.
+-auth      optional     pam_gnome_keyring.so
+
+# Keep lockout/account policy; clear the counter after successful authentication.
+account    required     pam_faillock.so
+account    include      system-local-login
+session    include      system-local-login
+-session   optional     pam_gnome_keyring.so auto_start
+password   include      system-local-login
+-password  optional     pam_gnome_keyring.so use_authtok

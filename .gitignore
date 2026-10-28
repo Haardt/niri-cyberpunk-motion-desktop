@@ -1,0 +1,11 @@
+# Keep source and lockfiles; exclude local builds, packages and test caches.
+**/target/
+**/dist/
+**/.package/
+**/.test-deps/
+**/__pycache__/
+*.py[cod]
+*.log
+*.pkg.tar.*
+*-src.tar.gz
+.DS_Store

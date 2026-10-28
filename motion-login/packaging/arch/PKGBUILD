@@ -1,0 +1,64 @@
+# Local source snapshot assembled by build-package.sh. No service activation hooks.
+pkgname=motion-login
+pkgver=0.3.0
+pkgrel=14
+pkgdesc='GPU animated Wayland greetd greeter with a cyberpunk login interface'
+arch=('x86_64')
+license=('GPL-3.0-or-later' 'MIT' 'Apache-2.0' 'LicenseRef-Shader-Assets')
+depends=('greetd' 'fprintd' 'niri' 'dbus' 'glibc' 'libgcc' 'libglvnd' 'wayland' 'libxkbcommon' 'xkeyboard-config')
+makedepends=('rust' 'pkgconf')
+optdepends=('mpv: optional hardware video background support')
+provides=('greetd-greeter')
+backup=('etc/motion-login/login.toml' 'etc/motion-login/background.toml'
+        'etc/motion-login/greetd.toml' 'etc/motion-login/greeter.kdl' 'etc/pam.d/motion-login')
+options=('!lto' '!debug')
+source=("motion-login-${pkgver}.tar.gz")
+sha256sums=('SOURCE_HASH')
+
+_cargo_env() {
+    export CARGO_TARGET_DIR="$srcdir/build-target"
+    if [[ -z ${_motion_remapped:-} ]]; then
+        export RUSTFLAGS="${RUSTFLAGS:-} --remap-path-prefix=$srcdir=/usr/src/motion-login"
+        _motion_remapped=1
+    fi
+}
+
+build() {
+    _cargo_env
+    cd "$srcdir/motion-login-$pkgver/motion-login"
+    cargo build --release --locked
+}
+
+check() {
+    _cargo_env
+    cd "$srcdir/motion-login-$pkgver/motion-login"
+    cargo test --locked
+    cargo test --locked --manifest-path ../motion-render/Cargo.toml
+    "$CARGO_TARGET_DIR/release/motion-login" --check --config login.toml --background background.toml
+    niri validate --config packaging/greeter.kdl
+}
+
+package() {
+    local root="$srcdir/motion-login-$pkgver"
+    cd "$root/motion-login"
+    install -Dm755 "$srcdir/build-target/release/motion-login" "$pkgdir/usr/bin/motion-login"
+    install -Dm755 packaging/greeter-session "$pkgdir/usr/lib/motion-login/greeter-session"
+    install -Dm644 packaging/arch/motion-login.conf "$pkgdir/usr/lib/systemd/system/greetd.service.d/motion-login.conf"
+    for file in login.toml background.toml; do
+        install -Dm644 "$file" "$pkgdir/etc/motion-login/$file"
+    done
+    sed -i 's|../niri-motion-background/shaders/|/usr/share/motion-login/shaders/|g' "$pkgdir/etc/motion-login/background.toml"
+    install -Dm644 packaging/motion-login.pam "$pkgdir/etc/pam.d/motion-login"
+    for file in greetd.toml greeter.kdl; do
+        install -Dm644 "packaging/$file" "$pkgdir/etc/motion-login/$file"
+    done
+    install -d "$pkgdir/usr/share/motion-login/shaders" "$pkgdir/usr/share/licenses/motion-login"
+    cp -a "$root/niri-motion-background/shaders/." "$pkgdir/usr/share/motion-login/shaders/"
+    install -Dm644 LICENSE "$pkgdir/usr/share/licenses/motion-login/LICENSE-GPL"
+    install -Dm644 ../motion-render/LICENSE "$pkgdir/usr/share/licenses/motion-login/LICENSE-MIT"
+    install -Dm644 ../niri-motion-background/THIRD_PARTY.md "$pkgdir/usr/share/licenses/motion-login/THIRD_PARTY.md"
+    cp -a ../niri-motion-background/third_party "$pkgdir/usr/share/licenses/motion-login/"
+    cp -a fonts "$pkgdir/usr/share/licenses/motion-login/fonts"
+    install -Dm644 README.md "$pkgdir/usr/share/doc/motion-login/README.md"
+    install -Dm644 packaging/arch/INSTALL.md "$pkgdir/usr/share/doc/motion-login/INSTALL.md"
+}

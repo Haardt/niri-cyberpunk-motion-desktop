@@ -1,0 +1,229 @@
+{
+  "checked_at": "2026-10-23T19:29:47.629911+00:00",
+  "projects": {
+    "motion-login": {
+      "anyhow": {
+        "requested": "1",
+        "locked": [
+          "1.0.104"
+        ],
+        "latest_stable": "1.0.104"
+      },
+      "glow": {
+        "requested": "0.18",
+        "locked": [
+          "0.18.0"
+        ],
+        "latest_stable": "0.18.0"
+      },
+      "zeroize": {
+        "requested": "1",
+        "locked": [
+          "1.9.1"
+        ],
+        "latest_stable": "1.9.1"
+      },
+      "xkeysym": {
+        "requested": "0.2",
+        "locked": [
+          "0.2.1"
+        ],
+        "latest_stable": "0.2.1"
+      },
+      "env_logger": {
+        "requested": "0.11",
+        "locked": [
+          "0.11.11"
+        ],
+        "latest_stable": "0.11.11"
+      },
+      "libc": {
+        "requested": "0.2",
+        "locked": [
+          "0.2.191"
+        ],
+        "latest_stable": "0.2.191"
+      },
+      "smithay-client-toolkit": {
+        "requested": "0.21",
+        "locked": [
+          "0.21.1"
+        ],
+        "latest_stable": "0.21.1"
+      },
+      "rusttype": {
+        "requested": "0.9",
+        "locked": [
+          "0.9.3"
+        ],
+        "latest_stable": "0.9.3"
+      },
+      "wayland-client": {
+        "requested": "0.31",
+        "locked": [
+          "0.31.15"
+        ],
+        "latest_stable": "0.31.15"
+      },
+      "serde": {
+        "requested": "1.0",
+        "locked": [
+          "1.0.229"
+        ],
+        "latest_stable": "1.0.229"
+      },
+      "greetd_ipc": {
+        "requested": "0.10",
+        "locked": [
+          "0.10.3"
+        ],
+        "latest_stable": "0.10.3"
+      },
+      "getopts": {
+        "requested": "0.2",
+        "locked": [
+          "0.2.24"
+        ],
+        "latest_stable": "0.2.24"
+      },
+      "toml": {
+        "requested": "1.1",
+        "locked": [
+          "1.1.8+spec-1.1.0"
+        ],
+        "latest_stable": "1.1.8+spec-1.1.0"
+      }
+    },
+    "motion-render": {
+      "anyhow": {
+        "requested": "1",
+        "locked": [
+          "1.0.104"
+        ],
+        "latest_stable": "1.0.104"
+      },
+      "glow": {
+        "requested": "0.18",
+        "locked": [
+          "0.18.0"
+        ],
+        "latest_stable": "0.18.0"
+      },
+      "image": {
+        "requested": "0.25",
+        "locked": [
+          "0.25.10"
+        ],
+        "latest_stable": "0.25.10"
+      },
+      "libc": {
+        "requested": "0.2",
+        "locked": [
+          "0.2.191"
+        ],
+        "latest_stable": "0.2.191"
+      },
+      "libloading": {
+        "requested": "0.9",
+        "locked": [
+          "0.9.0"
+        ],
+        "latest_stable": "0.9.0"
+      },
+      "log": {
+        "requested": "0.4",
+        "locked": [
+          "0.4.34"
+        ],
+        "latest_stable": "0.4.34"
+      },
+      "serde": {
+        "requested": "1",
+        "locked": [
+          "1.0.229"
+        ],
+        "latest_stable": "1.0.229"
+      },
+      "serde_json": {
+        "requested": "1",
+        "locked": [
+          "1.0.154"
+        ],
+        "latest_stable": "1.0.154"
+      },
+      "smithay-client-toolkit": {
+        "requested": "0.21",
+        "locked": [
+          "0.21.1"
+        ],
+        "latest_stable": "0.21.1"
+      },
+      "toml": {
+        "requested": "1.1",
+        "locked": [
+          "1.1.8+spec-1.1.0"
+        ],
+        "latest_stable": "1.1.8+spec-1.1.0"
+      },
+      "wayland-client": {
+        "requested": "0.31",
+        "locked": [
+          "0.31.15"
+        ],
+        "latest_stable": "0.31.15"
+      },
+      "wayland-egl": {
+        "requested": "0.32",
+        "locked": [
+          "0.32.11"
+        ],
+        "latest_stable": "0.32.11"
+      },
+      "wayland-protocols": {
+        "requested": "0.32",
+        "locked": [
+          "0.32.13"
+        ],
+        "latest_stable": "0.32.13"
+      }
+    },
+    "niri-motion-background": {
+      "anyhow": {
+        "requested": "1",
+        "locked": [
+          "1.0.104"
+        ],
+        "latest_stable": "1.0.104"
+      },
+      "clap": {
+        "requested": "4",
+        "locked": [
+          "4.6.7"
+        ],
+        "latest_stable": "4.6.7"
+      },
+      "env_logger": {
+        "requested": "0.11",
+        "locked": [
+          "0.11.11"
+        ],
+        "latest_stable": "0.11.11"
+      },
+      "glow": {
+        "requested": "0.18",
+        "locked": [
+          "0.18.0"
+        ],
+        "latest_stable": "0.18.0"
+      },
+      "image": {
+        "requested": "0.25",
+        "locked": [
+          "0.25.10"
+        ],
+        "latest_stable": "0.25.10"
+      }
+    }
+  },
+  "outdated_direct_dependencies": []
+}
