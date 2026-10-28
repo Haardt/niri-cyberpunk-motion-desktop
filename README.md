@@ -2,9 +2,29 @@
 
 A cyberpunk-inspired look and feel for a Wayland/niri desktop: custom login and lock screens, animated wallpapers, and a fork of the **Noctalia** desktop shell with glitch animations.
 
+## Desktop demo
+
+[![Watch the desktop demo: cyberpunk launcher, system tooltip and animated ocean wallpaper](screenshots/desktop-demo-preview.jpg)](recordings/desktop-demo.mp4)
+
+[▶ Watch the 27-second demo](recordings/desktop-demo.mp4) · MP4, 4.3 MB
+
+Two launcher openings with glitch effects, the CPU tooltip, Control Center, Settings, and twelve animated backgrounds.
+
 > **All AI — a personal experiment.** This is a personal test of building and configuring a Linux desktop with coding agents. Treat the generated code and configuration as experimental. Existing upstream code, fonts, shaders and their licenses retain their original attribution.
 >
 > **The year of the Linux desktop: coding agents let you configure everything. BUT: use at your own risk — agent in YOLO mode.**
+
+## Screenshots
+
+Login and lock screen previews with the animated ocean sunrise background, captured fullscreen at 2880 × 1920.
+
+### Login screen
+
+![Cyberpunk login screen with ocean waves and sunrise](screenshots/login-ocean-sunrise-fullscreen.png)
+
+### Lock screen
+
+![Cyberpunk lock screen with ocean waves and sunrise](screenshots/lock-ocean-sunrise-fullscreen.png)
 
 ## Projects and dependencies
 
